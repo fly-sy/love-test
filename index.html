@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>关键帧</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		html {
+			overflow: hidden;
+		}
+		body {
+			background: #111;
+		}
+
+		.love {
+			width: 100px;
+			height: 100px;
+			background: pink;
+			margin: 200px auto;
+			/*css3 变换
+				rotate 旋转
+				scale 缩放
+				translate 位移
+
+				skew 倾斜
+			*/
+			transform: rotate(45deg);
+
+
+			/*css3过渡
+				参数1 设置需要过渡的属性
+				参数2 过渡时间
+				参数3 过渡曲线
+			*/
+			transition: all 1s ease;
+		}
+
+		.love img {
+			position: absolute;
+			transform: rotate(-45deg);
+			z-index: 520;
+		}
+		/*.love .item-l {
+				width: 100px;
+				height: 100px;
+				background: pink;
+				border-radius: 50%;
+				position: absolute;
+				left: 0;
+				top: -50%;
+		}*/
+
+		.love:before {
+			content: '';
+			width: 100px;
+			height: 100px;
+			background: pink;
+			border-radius: 50%;
+			position: absolute;
+			left: 0;
+			top: -50%;
+		}
+		/*
+		.love .item-r {
+				width: 100px;
+				height: 100px;
+				background: pink;
+				border-radius: 50%;
+				position: absolute;
+				left: -50%;
+				top: 0;
+		}*/
+
+		.love:after {
+			content: '';
+			width: 100px;
+			height: 100px;
+			background: pink;
+			border-radius: 50%;
+			position: absolute;
+			left: -50%;
+			top: 0;
+		}
+
+		.love:hover {
+			transform: scale(2) rotate(45deg);
+		}
+		/*自定义关键帧样式*/
+
+		@keyframes scale {
+			0% {
+				transform: scale(1) rotate(45deg);
+			}
+			50% {
+				transform: scale(2) rotate(45deg);
+			}
+			100% {
+				transform: scale(1) rotate(45deg);
+			}
+		}
+
+		.scale {
+			/*样式名 时间 曲线 无限循环 延迟时间*/
+			animation: scale 1.2s linear infinite;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="love scale" id="love">
+		<!-- <div class="item-l"></div> -->
+		<!-- <div class="item-r"></div> -->
+		<img src="./1.gif" alt="">
+	</div>
+	<!-- autoplay自动播放  loop循环播放 -->
+	<audio src="./0.mp3" autoplay loop></audio>
+</body>
+
+</html>
